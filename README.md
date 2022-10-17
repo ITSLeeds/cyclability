@@ -45,13 +45,13 @@ Other packages that we use which you may want to install include:
 
 ``` r
 other_packages = c(
-  "r5r",
-  "cyclestreets"
+  "r5r"
 )
 remotes::install_cran(other_packages)
 #> Skipping install of 'r5r' from a cran remote, the SHA1 (0.7.1) has not changed since last install.
 #>   Use `force = TRUE` to force installation
-#> Skipping install of 'cyclestreets' from a cran remote, the SHA1 (0.5.3) has not changed since last install.
+remotes::install_github("cyclestreets/cyclestreets-r")
+#> Skipping install of 'cyclestreets' from a github remote, the SHA1 (68b345cd) has not changed since last install.
 #>   Use `force = TRUE` to force installation
 ```
 
@@ -155,6 +155,55 @@ leeds_lts |>
 ```
 
 ## Quitness data from CycleStreets
+
+To get estimates of quietness on the network we used `cyclestreets`
+package. See [code/cyclestreets_setup.R](code/r5r_setup.R) for details.
+
+The resulting estimates of LTS in Leeds can be read-in and visualised as
+follows:
+
+``` r
+leeds_quietness = sf::read_sf("cyclestreets/leeds_quietness.geojson")
+leeds_quietness
+#> Simple feature collection with 2745 features and 9 fields
+#> Geometry type: LINESTRING
+#> Dimension:     XY
+#> Bounding box:  xmin: -1.58941 ymin: 53.79281 xmax: -1.53612 ymax: 53.82387
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 2,745 × 10
+#>    name               ridin…¹     id cycla…² quiet…³ speed…⁴ speed…⁵ pause color
+#>    <chr>              <chr>    <int> <chr>     <int>   <int>   <int> <int> <chr>
+#>  1 Hanover Way        Minor … 1.71e6 Yes          40      16      26     0 #929…
+#>  2 Hyde Place         Reside… 1.71e6 Yes          60      15      24     0 #B06…
+#>  3 Buckingham Avenue  Reside… 2.96e6 Yes          40      15      24     0 #929…
+#>  4 Back Buckingham M… Servic… 2.96e6 Yes          40      12      20     0 #929…
+#>  5 Back Midland Road  Reside… 3.98e6 Yes          60      15      24     0 #B06…
+#>  6 Midland Passage    Servic… 3.98e6 Yes          60      12      20     0 #B06…
+#>  7 Ebberston Place    Reside… 3.98e6 Yes          60      15      24     0 #B06…
+#>  8 Chestnut Place     Reside… 3.98e6 Yes          50       7      12     0 #7E9…
+#>  9 Chestnut Place     Reside… 3.98e6 Yes          50       7      12     0 #7E9…
+#> 10 Welton Mount       Reside… 3.98e6 Yes          60      15      24     0 #B06…
+#> # … with 2,735 more rows, 1 more variable: geometry <LINESTRING [°]>, and
+#> #   abbreviated variable names ¹​ridingSurface, ²​cyclableText, ³​quietness,
+#> #   ⁴​speedMph, ⁵​speedKmph
+leeds_quietness |> 
+  select(quietness) |> 
+  plot()
+```
+
+![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+
+``` r
+leeds_quietness |> 
+  select(quietness) |> 
+  mapview::mapview(zcol = "quietness")
+```
+
+## Comparison of cyclability metrics
+
+``` r
+# task for the hackathon
+```
 
 # OSM data
 

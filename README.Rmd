@@ -45,10 +45,10 @@ Other packages that we use which you may want to install include:
 
 ```{r}
 other_packages = c(
-  "r5r",
-  "cyclestreets"
+  "r5r"
 )
 remotes::install_cran(other_packages)
+remotes::install_github("cyclestreets/cyclestreets-r")
 ```
 
 For the practical we assume you have the following packages loaded:
@@ -96,6 +96,31 @@ leeds_lts |>
 
 
 ## Quitness data from CycleStreets
+
+To get estimates of quietness on the network we used `cyclestreets` package.
+See [code/cyclestreets_setup.R](code/r5r_setup.R) for details.
+
+The resulting estimates of LTS in Leeds can be read-in and visualised as follows:
+
+```{r}
+leeds_quietness = sf::read_sf("cyclestreets/leeds_quietness.geojson")
+leeds_quietness
+leeds_quietness |> 
+  select(quietness) |> 
+  plot()
+```
+
+```{r, eval=FALSE}
+leeds_quietness |> 
+  select(quietness) |> 
+  mapview::mapview(zcol = "quietness")
+```
+
+## Comparison of cyclability metrics
+
+```{r}
+# task for the hackathon
+```
 
 
 
