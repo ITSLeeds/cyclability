@@ -19,15 +19,15 @@ library(r5r)
 # sf::st_write(leeds_smallarea, "r5r/leeds_smallarea.geojson")
 # download files here: https://export.hotosm.org/en/v3/exports/4ef4c70c-55be-489c-8b0d-f9c1c7e9ee19
 
-r5r_lts = setup_r5(data_path = "r5r/") #to create new, delete network.dat in the folder. otherwise just load it
+r5r_lts = setup_r5(data_path = "r5r/") #to create new: delete network.dat in the folder. otherwise just load it
 # includes .pbf
-# .zip of gtfs not inluded
+# .zip of gtfs not included
 # .tiff of elevation model not included
 
-# export nework with osm_id and LTS levels
+# export network with osm_id and LTS levels
 r5r_lts_shp = street_network_to_sf(r5r_lts)
 r5r_lts_shp = r5r_lts_shp$edges
-# nrow(r5r_lts_shp) # 8686 edes
+# nrow(r5r_lts_shp) # 8686 edges
 saveRDS(r5r_lts_shp, "r5r/r5r_lts_shp.Rds")
 
 View(r5r_lts_shp)
@@ -53,13 +53,13 @@ saveRDS(r5r_lts_shp_osmtags, "r5r/r5r_lts_shp_osmtags.Rds")
 
 r5r_lts_large = setup_r5(data_path = "r5r_large/") #to create new, delete network.dat in the folder. otherwise just load it
 # includes .pbf
-# .zip of gtfs not inluded
+# .zip of gtfs not included
 # .tiff of elevation model not included
 
-# export nework with osm_id and LTS levels
+# export network with osm_id and LTS levels
 r5r_lts_large_shp = street_network_to_sf(r5r_lts_large)
 r5r_lts_large_shp = r5r_lts_large_shp$edges
-# nrow(r5r_lts_large_shp) # 338494 edes
+# nrow(r5r_lts_large_shp) # 338494 edges
 saveRDS(r5r_lts_large_shp, "r5r_large/r5r_lts_large_shp.Rds")
 
 r5r_lts_large_shp_osmtags = r5r_lts_large_shp %>% st_drop_geometry() %>%
