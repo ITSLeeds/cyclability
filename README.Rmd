@@ -25,6 +25,51 @@ There are at least three definitions of how conducive to cycling different place
   - Level 2 teaches trainees to cycle planned routes on minor roads, offering a real cycling experience.
   - Level 3 ensures trainees are able to manage a variety of traffic conditions and is delivered on busier roads with advanced features and layouts
 - CycleStreets's [Quietness rating](https://www.cyclestreets.net/help/journey/howitworks/#quietness) from 1 (very unpleasant for cycling) to 100 (the quietest)
+
+# Setup
+
+For this practical we'll be using a number of R packages, which can be installed as follows:
+
+```{r installation, eval=FALSE}
+# core packages:
+install.packages("remotes")
+core_packages = c(
+  "tidyverse",
+  "sf",
+  "tmap"
+)
+remotes::install_cran(core_packages)
+```
+
+Other packages that we use which you may want to install include:
+
+```{r}
+other_packages = c(
+  "r5r",
+  "cyclestreets"
+)
+remotes::install_cran(other_packages)
+```
+
+For the practical we assume you have the following packages loaded:
+
+```{r library, message=FALSE}
+library(tidyverse)
+```
+
+
   
+# Cyclability data
+
+## LTS data from R5
+
+To get estimates of LTS on the network we used the R5 routing engine via the `r5r` package.
+See [code/r5r_setup.R](code/r5r_setup.R) for details.
+
+The resulting estimates of LTS in Leeds can be read-in and visualised as follows:
+
+```{r}
+""
+```
 
 
