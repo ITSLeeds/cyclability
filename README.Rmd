@@ -58,6 +58,17 @@ library(tidyverse)
 library(sf)
 ```
 
+To get going with the data a good starting point is to download the the data in this repo.
+Do this by clicking on https://github.com/ITSLeeds/cyclability/archive/refs/heads/main.zip and then download and unzip the folder.
+Assuming you have unzipped the folder in your Downloads folder you should be able to open the project with the following command in RStudio:
+
+```{r, eval=FALSE}
+rstudioapi::openProject("~/Downloads/cyclability-main/")
+```
+
+After you have opened the project you should be able to run the following commands.
+Try reproducing the next code chunk to generate a plot to see if it works.
+If not you can open an issue at https://github.com/ITSLeeds/cyclability/issues
 
   
 # Cyclability data
@@ -70,7 +81,8 @@ See [code/r5r_setup.R](code/r5r_setup.R) for details.
 The resulting estimates of LTS in Leeds can be read-in and visualised as follows:
 
 ```{r}
-leeds_lts = readRDS("r5r/r5r_lts_shp.Rds")
+leeds_lts = readRDS("r5r/r5r_lts_shp_osmtags.Rds")
+leeds_lts
 leeds_lts |> 
   select(bicycle_lts) |> 
   plot()

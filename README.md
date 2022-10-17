@@ -62,6 +62,22 @@ library(tidyverse)
 library(sf)
 ```
 
+To get going with the data a good starting point is to download the the
+data in this repo. Do this by clicking on
+<https://github.com/ITSLeeds/cyclability/archive/refs/heads/main.zip>
+and then download and unzip the folder. Assuming you have unzipped the
+folder in your Downloads folder you should be able to open the project
+with the following command in RStudio:
+
+``` r
+rstudioapi::openProject("~/Downloads/cyclability-main/")
+```
+
+After you have opened the project you should be able to run the
+following commands. Try reproducing the next code chunk to generate a
+plot to see if it works. If not you can open an issue at
+<https://github.com/ITSLeeds/cyclability/issues>
+
 # Cyclability data
 
 ## LTS data from R5
@@ -73,13 +89,64 @@ The resulting estimates of LTS in Leeds can be read-in and visualised as
 follows:
 
 ``` r
-leeds_lts = readRDS("r5r/r5r_lts_shp.Rds")
+leeds_lts = readRDS("r5r/r5r_lts_shp_osmtags.Rds")
+leeds_lts
+#> Simple feature collection with 10134 features and 19 fields (with 312 geometries empty)
+#> Geometry type: LINESTRING
+#> Dimension:     XY
+#> Bounding box:  xmin: -1.575111 ymin: 53.79672 xmax: -1.53612 ymax: 53.81871
+#> Geodetic CRS:  WGS 84
+#> First 10 features:
+#>    edge_index  osm_id from_vertex to_vertex street_class length walk  car
+#> 1           0 1709456           0         1     TERTIARY 14.750 TRUE TRUE
+#> 2           1 1709456           1         0     TERTIARY 14.750 TRUE TRUE
+#> 3           2 1709456           1         2     TERTIARY 44.502 TRUE TRUE
+#> 4           3 1709456           2         1     TERTIARY 44.502 TRUE TRUE
+#> 5           4 1709456           2         3     TERTIARY 19.366 TRUE TRUE
+#> 6           5 1709456           3         2     TERTIARY 19.366 TRUE TRUE
+#> 7           6 1709456           3         4     TERTIARY 45.043 TRUE TRUE
+#> 8           7 1709456           4         3     TERTIARY 45.043 TRUE TRUE
+#> 9           8 1709460           5         6        OTHER 69.640 TRUE TRUE
+#> 10          9 1709460           6         5        OTHER 69.640 TRUE TRUE
+#>    car_speed bicycle bicycle_lts        name     highway waterway aerialway
+#> 1     48.276    TRUE           3 Hanover Way    tertiary     <NA>      <NA>
+#> 2     48.276    TRUE           3 Hanover Way    tertiary     <NA>      <NA>
+#> 3     48.276    TRUE           3 Hanover Way    tertiary     <NA>      <NA>
+#> 4     48.276    TRUE           3 Hanover Way    tertiary     <NA>      <NA>
+#> 5     48.276    TRUE           3 Hanover Way    tertiary     <NA>      <NA>
+#> 6     48.276    TRUE           3 Hanover Way    tertiary     <NA>      <NA>
+#> 7     48.276    TRUE           3 Hanover Way    tertiary     <NA>      <NA>
+#> 8     48.276    TRUE           3 Hanover Way    tertiary     <NA>      <NA>
+#> 9     32.184    TRUE           3  Hyde Place residential     <NA>      <NA>
+#> 10    32.184    TRUE           3  Hyde Place residential     <NA>      <NA>
+#>    barrier man_made z_order                        other_tags
+#> 1     <NA>     <NA>       4 "lit"=>"yes","maxspeed"=>"30 mph"
+#> 2     <NA>     <NA>       4 "lit"=>"yes","maxspeed"=>"30 mph"
+#> 3     <NA>     <NA>       4 "lit"=>"yes","maxspeed"=>"30 mph"
+#> 4     <NA>     <NA>       4 "lit"=>"yes","maxspeed"=>"30 mph"
+#> 5     <NA>     <NA>       4 "lit"=>"yes","maxspeed"=>"30 mph"
+#> 6     <NA>     <NA>       4 "lit"=>"yes","maxspeed"=>"30 mph"
+#> 7     <NA>     <NA>       4 "lit"=>"yes","maxspeed"=>"30 mph"
+#> 8     <NA>     <NA>       4 "lit"=>"yes","maxspeed"=>"30 mph"
+#> 9     <NA>     <NA>       3              "maxspeed"=>"20 mph"
+#> 10    <NA>     <NA>       3              "maxspeed"=>"20 mph"
+#>                          geometry
+#> 1  LINESTRING (-1.55754 53.799...
+#> 2  LINESTRING (-1.55754 53.799...
+#> 3  LINESTRING (-1.55754 53.799...
+#> 4  LINESTRING (-1.55754 53.799...
+#> 5  LINESTRING (-1.55754 53.799...
+#> 6  LINESTRING (-1.55754 53.799...
+#> 7  LINESTRING (-1.55754 53.799...
+#> 8  LINESTRING (-1.55754 53.799...
+#> 9  LINESTRING (-1.558721 53.80...
+#> 10 LINESTRING (-1.558721 53.80...
 leeds_lts |> 
   select(bicycle_lts) |> 
   plot()
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 ``` r
 leeds_lts |> 
