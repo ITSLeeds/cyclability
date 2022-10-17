@@ -59,6 +59,7 @@ For the practical we assume you have the following packages loaded:
 
 ``` r
 library(tidyverse)
+library(sf)
 ```
 
 # Cyclability data
@@ -72,8 +73,18 @@ The resulting estimates of LTS in Leeds can be read-in and visualised as
 follows:
 
 ``` r
-""
-#> [1] ""
+leeds_lts = readRDS("r5r/r5r_lts_shp.Rds")
+leeds_lts |> 
+  select(bicycle_lts) |> 
+  plot()
+```
+
+![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+``` r
+leeds_lts |> 
+  select(bicycle_lts) |> 
+  mapview::mapview(zcol = "bicycle_lts")
 ```
 
 ## Quitness data from CycleStreets
