@@ -43,9 +43,10 @@ leeds_osm = oe_get(
   "Leeds",
   quiet = FALSE)
 
-r5r_lts_shp_osmtags = r5r_lts_shp %>% st_drop_geometry() %>%
+r5r_lts_shp_osmtags = r5r_lts_shp %>% 
   mutate(osm_id = as.character(osm_id)) %>%
-  left_join(leeds_osm, by="osm_id") %>% st_as_sf()
+  left_join(leeds_osm %>% st_drop_geometry(), by="osm_id")
+
 saveRDS(r5r_lts_shp_osmtags, "r5r/r5r_lts_shp_osmtags.Rds")
 
 
@@ -62,7 +63,7 @@ r5r_lts_large_shp = r5r_lts_large_shp$edges
 # nrow(r5r_lts_large_shp) # 338494 edges
 saveRDS(r5r_lts_large_shp, "r5r_large/r5r_lts_large_shp.Rds")
 
-r5r_lts_large_shp_osmtags = r5r_lts_large_shp %>% st_drop_geometry() %>%
+r5r_lts_large_shp_osmtags = r5r_lts_large_shp %>% 
   mutate(osm_id = as.character(osm_id)) %>%
-  left_join(leeds_osm, by="osm_id")
+  left_join(leeds_osm %>% st_drop_geometry(), by="osm_id")
 saveRDS(r5r_lts_large_shp_osmtags, "r5r_large/r5r_lts_large_shp_osmtags.Rds")
