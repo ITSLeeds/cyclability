@@ -10,7 +10,7 @@ The goal of cyclability is to generate estimates of broadly defined
 cyclability. There are at least three definitions of how conducive to
 cycling different places and segments of roads and travel networks are:
 
-- Level of Traffic Stress (LTS)
+- [Level of Traffic Stress](https://docs.conveyal.com/learn-more/traffic-stress) (LTS)
 - [Bikeability](https://www.britishcycling.org.uk/cycletraining/article/ct20110111-cycletraining-What-is-Bikeability-0)
   levels, which rates infrastructure based on the level of training
   needed to feel comfortable:
