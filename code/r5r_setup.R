@@ -45,7 +45,7 @@ leeds_osm = oe_get(
 
 r5r_lts_shp_osmtags = r5r_lts_shp %>% st_drop_geometry() %>%
   mutate(osm_id = as.character(osm_id)) %>%
-  left_join(leeds_osm, by="osm_id")
+  left_join(leeds_osm, by="osm_id") %>% st_as_sf()
 saveRDS(r5r_lts_shp_osmtags, "r5r/r5r_lts_shp_osmtags.Rds")
 
 
