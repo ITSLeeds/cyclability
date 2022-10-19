@@ -78,6 +78,29 @@ following commands. Try reproducing the next code chunk to generate a
 plot to see if it works. If not you can open an issue at
 <https://github.com/ITSLeeds/cyclability/issues>
 
+# Hack agenda and topics
+
+- 15 minutes: get up-to-speed with best practices on data science
+  projects including using software for reproducible and collaborative
+  research such as Git and RStudio.
+
+- 15 minutes Download and reproduce a reproducible script that estimates
+  active travel friendliness based on open access OSM data.
+
+Hack topics:
+
+- Compare CycleStreets vs R5 estimates of cyclability
+- Testing and developing methods for geographic joins between route
+  network datasets
+- Identifying issues with quietness estimates based on real data data
+  (no code option)
+  - Think of a route you know well and calculate a route along it with
+    CycleStreets: <https://www.cyclestreets.net/>
+  - Issues with the route quietness estimation based on real world
+    knowledge
+- ITS Leeds website improvements: <https://www.cyclestreets.net/>
+- Any others Work to improve the script
+
 # Cyclability data
 
 ## LTS data from R5
