@@ -10,7 +10,8 @@ The goal of cyclability is to generate estimates of broadly defined
 cyclability. There are at least three definitions of how conducive to
 cycling different places and segments of roads and travel networks are:
 
-- Level of Traffic Stress (LTS)
+- [Level of Traffic
+  Stress](https://docs.conveyal.com/learn-more/traffic-stress) (LTS)
 - [Bikeability](https://www.britishcycling.org.uk/cycletraining/article/ct20110111-cycletraining-What-is-Bikeability-0)
   levels, which rates infrastructure based on the level of training
   needed to feel comfortable:
@@ -48,8 +49,9 @@ other_packages = c(
   "r5r"
 )
 remotes::install_cran(other_packages)
-#> Skipping install of 'r5r' from a cran remote, the SHA1 (0.7.1) has not changed since last install.
-#>   Use `force = TRUE` to force installation
+#> Installing 1 packages: r5r
+#> Installing package into '/home/rosa/R/x86_64-pc-linux-gnu-library/4.1'
+#> (as 'lib' is unspecified)
 remotes::install_github("cyclestreets/cyclestreets-r")
 #> Skipping install of 'cyclestreets' from a github remote, the SHA1 (68b345cd) has not changed since last install.
 #>   Use `force = TRUE` to force installation
